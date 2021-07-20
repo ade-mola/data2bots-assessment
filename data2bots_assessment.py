@@ -72,7 +72,7 @@ def output_json(data):
         data (dataframe): input dataframe from add_column()
     """
     try:
-        output_json = data.to_json(orient='records')
+        output_json = data.to_json(orient='records', indent=2)
 
         with open('data_output.json', 'w') as outfile:
             json.dump(output_json, outfile)
