@@ -27,7 +27,7 @@ def read_file():
     return input_data
 
 
-def main_function(data):
+def obsolete(data):
     """
     This function checks if an item's expiry date was before 2020-01-01 
     and adds the result ('True' or 'False') in the 'obsolete' column.
@@ -54,18 +54,21 @@ def output_json(data):
     Args:
         data (dataframe): input dataframe from main_function()
     """
-    output_json = data.to_json(orient='records')
+    try:
+        output_json = data.to_json(orient='records')
 
-    with open('output.json', 'w') as outfile:
-        json.dump(output_json, outfile)
+        with open('output.json', 'w') as outfile:
+            json.dump(output_json, outfile)
 
-    print('JSON file created!')
+        print('JSON file created!')
+    except Exception:
+        print('Error creating as JSON file!')
 
 
 def main():
     try:
         input_data = read_file()
-        processed_data = main_function(input_data)
+        processed_data = obsolete(input_data)
         output_json(processed_data)
     except IOError:
         print('Could not read in file. Re-check filename or add filepath.')
