@@ -69,12 +69,12 @@ def output_json(data):
     Converts dataframe into JSON format.
 
     Args:
-        data (dataframe): input dataframe from main_function()
+        data (dataframe): input dataframe from obsolete()
     """
     try:
         output_json = data.to_json(orient='records')
 
-        with open('output.json', 'w') as outfile:
+        with open('data_output.json', 'w') as outfile:
             json.dump(output_json, outfile)
 
         print('JSON file created in directory!')
