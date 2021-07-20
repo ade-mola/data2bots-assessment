@@ -69,7 +69,7 @@ def output_json(data):
     Converts dataframe into JSON format.
 
     Args:
-        data (dataframe): input dataframe from obsolete()
+        data (dataframe): input dataframe from add_column()
     """
     try:
         output_json = data.to_json(orient='records')
