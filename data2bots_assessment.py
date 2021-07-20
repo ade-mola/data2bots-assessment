@@ -60,7 +60,7 @@ def output_json(data):
         with open('output.json', 'w') as outfile:
             json.dump(output_json, outfile)
 
-        print('JSON file created!')
+        print('JSON file created in directory!')
     except Exception:
         print('Error creating as JSON file!')
 
