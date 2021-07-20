@@ -1,6 +1,6 @@
 # Data2Bots Job Assessment Test
 
-A python script that reads in a CSV files containing list of items, cross-checks their expiry dates and tags each item either 'True' if expired or 'False' if not expired.
+A python script that reads in a CSV files containing list of items, cross-checks their expiry dates and tags each item either `True` if expired or `False` otherwise.
 
 ## Files:
 - `data2bots_assessment.py`: python script
