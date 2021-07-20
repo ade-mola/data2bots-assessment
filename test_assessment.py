@@ -12,7 +12,7 @@ def test_obsolete_true():
     """
     date = pd.to_datetime('2020-09-01')
     result = obsolete(date)
-    assert result == 'True'
+    assert result == True
 
 
 def test_obsolete_false():
@@ -22,4 +22,4 @@ def test_obsolete_false():
     """
     date = pd.to_datetime('2021-07-12')
     result = obsolete(date)
-    assert result == 'False'
+    assert result == False
