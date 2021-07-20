@@ -7,7 +7,7 @@ import pandas as pd
 
 def test_obsolete_true():
     """
-    tests that cobsolete function returns TRUE
+    tests that obsolete function returns 'True'
     when a date less than 2021-01-01 is passed
     """
     date = pd.to_datetime('2020-09-01')
@@ -17,7 +17,7 @@ def test_obsolete_true():
 
 def test_obsolete_false():
     """
-    tests that obsolete function returns FALSE
+    tests that obsolete function returns 'False'
     when a date greater than 2021-01-01 is passed
     """
     date = pd.to_datetime('2021-07-12')
