@@ -27,21 +27,38 @@ def read_file():
     return input_data
 
 
-def obsolete(data):
+def obsolete(exp_date):
     """
-    This function checks if an item's expiry date was before 2020-01-01 
-    and adds the result ('True' or 'False') in the 'obsolete' column.
+    This function checks if an item's expiry date was before 2020-01-01 or not
 
     Args:
-        data (dataframe): input dataframe from read_file()
+        exp_date (datetime): expiry date of items from the input file
 
     Returns:
-        processed_data (dataframe): processed dataframe with 'obsolete' column
+        True or False (boolean)
     """
-    expiry_date = pd.to_datetime("2021-01-01")
+    ref_exp_date = pd.to_datetime("2021-01-01")  # reference expiry date
+    diff = (exp_date - ref_exp_date).days
 
-    data['obsolete'] = [True if data.loc[row, 'date'] <
-                        expiry_date else False for row in range(len(data))]
+    if diff < 0:
+        return 'True'
+    else:
+        return 'False'
+
+
+def add_column(data):
+    """
+    Adds new column 'obsolete' with value either 'True' or 'False',
+    if an item is expired or not
+
+    Args:
+        data (dataframe): input data from read_file()
+
+    Returns:
+        processed_data (dataframe): processed dataframe with the new column
+    """
+
+    data['obsolete'] = data['date'].map(obsolete)
     processed_data = data
 
     return processed_data
@@ -68,7 +85,7 @@ def output_json(data):
 def main():
     try:
         input_data = read_file()
-        processed_data = obsolete(input_data)
+        processed_data = add_column(input_data)
         output_json(processed_data)
     except IOError:
         print('Could not read in file. Re-check filename or add filepath.')
