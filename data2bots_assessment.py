@@ -41,9 +41,9 @@ def obsolete(exp_date):
     diff = (exp_date - ref_exp_date).days
 
     if diff < 0:
-        return 'True'
+        return True
     else:
-        return 'False'
+        return False
 
 
 def add_column(data):
